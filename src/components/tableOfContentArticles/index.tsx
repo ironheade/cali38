@@ -1,0 +1,1 @@
+export {TableOfContentArticles} from './tableOfContentArticles'

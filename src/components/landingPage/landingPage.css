@@ -1,0 +1,22 @@
+#headline {
+    font-weight: bold;
+    color: white;
+    font-size: 72px;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#subheadline {
+    font-size: 22px;
+    width:50%;
+    margin-bottom: 100px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: justify;
+}
+
+@media only screen and (max-width: 800px) {
+    #subheadline {
+        width:100%;
+    }
+  }

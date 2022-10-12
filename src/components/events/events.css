@@ -1,0 +1,39 @@
+.article {
+    background-color: white;
+    margin: 5px;
+    border-radius: 5px;
+    margin: 10px
+}
+
+.article-headline{
+    font-size: 32px;
+}
+
+.article-subheadline{
+    font-style: italic;
+    font-size: larger;
+}
+
+.article-text{
+    font-size: large;
+}
+
+#article-container{
+    margin-top: 30vh;
+}
+
+#table-of-content-articles{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 30vh;
+    width: fit-content;
+}
+
+.wrapper {
+    float: left;
+    justify-content: space-between;
+  }
+
+.Article-background{
+    margin-top: 30px;
+}

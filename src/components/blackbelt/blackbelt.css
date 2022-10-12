@@ -1,0 +1,33 @@
+.blackBelt {
+    min-height: 80vh;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center
+}
+
+.blackBeltSpacer {
+    height: 20vh;
+    width: 100%;
+    background-color: transparent;
+}
+
+.blackBeltText {
+    color: white;
+    font-size: 22px;
+    text-align: justify;
+}
+
+.blackBeltHeadline {
+    font-size: 64px;
+    text-align: left;
+}
+
+.blackBeltLink {
+    color: white;
+    text-decoration: underline;
+}
+
+#blackBeltImage {
+    width: 30vw;
+}

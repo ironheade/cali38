@@ -1,0 +1,1 @@
+export {ImageActionBanner} from './bannercard'

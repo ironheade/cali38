@@ -32,28 +32,28 @@ export function Exercise() {
         bild: "https://firebasestorage.googleapis.com/v0/b/cali38.appspot.com/o/files%2FGordonFlag.jpg?alt=media&token=6c7e40d3-8956-451d-8a0e-a109a9b99a11",
         headline: "Human Flag",
         text: "liquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod te!",
-        muskelgruppen: ["Lat","Arme"],
+        muskelgruppen: ["Lat", "Arme"],
         besonderheiten: ["Alles"],
         schwierigkeit: "Profi"
     }]
 
-    const [exerciseData,setExerciseData] = useState(defaultExerciseData)
+    const [exerciseData, setExerciseData] = useState(defaultExerciseData)
 
-    const checklist = ["Anfänger","Fortgeschritten","Profi"]
-    const [filterSchwierigkeit,setFilterSchwierigkeit] = useState(checklist)
+    const checklist = ["Anfänger", "Fortgeschritten", "Profi"]
+    const [filterSchwierigkeit, setFilterSchwierigkeit] = useState(checklist)
 
     //Fügt alle Muskelgruppen zu einer Liste zusammen
     const muskelgruppenSet = new Set()
     defaultExerciseData.map((item => item.muskelgruppen.forEach(muskelgruppenSet.add, muskelgruppenSet)))
-    const muskelgruppen =Array.from(muskelgruppenSet)
-    const [muskelgruppenFilter,setMuskelgruppenFilter] = useState(muskelgruppen)
+    const muskelgruppen = Array.from(muskelgruppenSet)
+    const [muskelgruppenFilter, setMuskelgruppenFilter] = useState(muskelgruppen)
 
     //Ändert die angezeigten Übungen, je nachdem welcher Filter ausgewählt ist
-    useEffect((()=>{
+    useEffect((() => {
         let filteredExercises = defaultExerciseData.filter(item => filterSchwierigkeit.includes(item.schwierigkeit))
-        filteredExercises = (filteredExercises.filter(item => item.muskelgruppen.filter(item => muskelgruppenFilter.includes(item)).length>0))
+        filteredExercises = (filteredExercises.filter(item => item.muskelgruppen.filter(item => muskelgruppenFilter.includes(item)).length > 0))
         setExerciseData(filteredExercises)
-    }),[filterSchwierigkeit,muskelgruppenFilter])
+    }), [filterSchwierigkeit, muskelgruppenFilter])
 
     function Farbe(Schwierigkeit: any) {
         switch (Schwierigkeit) {
@@ -69,62 +69,61 @@ export function Exercise() {
     }
 
     return (
+
         <Container
-            //size="xl" 
+            size="xl"
             style={{ marginTop: "30vh" }} my="xs">
             <Grid grow>
-                <Grid.Col>
-                <Paper id="exercisePaper" shadow="xl" p="md">
-                    <h1>Filter</h1>
-                    <Grid>
-                        <Grid.Col  xs={6}>
-                        <Checkboxes checked={filterSchwierigkeit} setChecked={setFilterSchwierigkeit} title="Schwierigkeit" checklist={checklist}/>
-                        </Grid.Col>
-                        <Grid.Col  xs={6}>
-                        <Checkboxes checked={muskelgruppenFilter} setChecked={setMuskelgruppenFilter} title="Muskelgruppen" checklist={muskelgruppen}/>
-                        </Grid.Col>
-                    </Grid>
-                </Paper>
-                </Grid.Col>
-                {exerciseData.map((item, index) =>
-                    <Grid.Col key={index}>
-                        <Paper id="exercisePaper" shadow="md" p="md">
-                            <Grid>
-                                <Grid.Col xs={4}>
-                                    <Image
-                                        radius="md"
-                                        src={item.bild}
-                                        alt="Random unsplash image"
-                                    />              </Grid.Col>
-                                <Grid.Col xs={8}>
-                                    <h1>{item.headline}</h1>
-                                    <Text>
-                                        {item.text}
-                                    </Text>
-                                    <h4>Muskelgruppen</h4>
-                                    <ul>
-                                        {item.muskelgruppen.map((item, index) => <li key={index}>{item}</li>)}
-                                    </ul>
-                                    <h4>Besonderheiten</h4>
-                                    <ul>
-                                        {item.besonderheiten.map((item, index) => <li key={index}>{item}</li>)}
-                                    </ul>
-                                    <Tooltip
-                                        label={item.schwierigkeit}
-                                        position="bottom"
-                                        withArrow>
-                                        <div id="Schwierigkeit" style={{ backgroundColor: Farbe(item.schwierigkeit) }}>
-                                            <IconBarbell id="BarbellLogo" size={42} stroke={1.5} color={item.schwierigkeit === "Fortgeschritten" ? "black" : "white"} />
-                                        </div>
-                                    </Tooltip>
-                                </Grid.Col>
-                            </Grid>
-
+                <Grid.Col md={2}>
+                    <Grid.Col className='filterColumn'>
+                        <Paper id="exercisePaper" shadow="xl" p="md">
+                            <h1>Filter</h1>
+                            <Checkboxes checked={filterSchwierigkeit} setChecked={setFilterSchwierigkeit} title="Schwierigkeit" checklist={checklist} />
+                            <Checkboxes checked={muskelgruppenFilter} setChecked={setMuskelgruppenFilter} title="Muskelgruppen" checklist={muskelgruppen} />
                         </Paper>
                     </Grid.Col>
-                )}
+                </Grid.Col>
+                <Grid.Col md={10} >
+                    {exerciseData.map((item, index) =>
+                        <Grid.Col key={index}>
+                            <Paper id="exercisePaper" shadow="xl" p="md">
+                                <Grid>
+                                    <Grid.Col xs={4}>
+                                        <Image
+                                            radius="md"
+                                            src={item.bild}
+                                            alt="Random unsplash image"
+                                        />              </Grid.Col>
+                                    <Grid.Col xs={8}>
+                                        <h1>{item.headline}</h1>
+                                        <Text>
+                                            {item.text}
+                                        </Text>
+                                        <h4>Muskelgruppen</h4>
+                                        <ul>
+                                            {item.muskelgruppen.map((item, index) => <li key={index}>{item}</li>)}
+                                        </ul>
+                                        <h4>Besonderheiten</h4>
+                                        <ul>
+                                            {item.besonderheiten.map((item, index) => <li key={index}>{item}</li>)}
+                                        </ul>
+                                        <Tooltip
+                                            label={item.schwierigkeit}
+                                            position="bottom"
+                                            withArrow>
+                                            <div id="Schwierigkeit" style={{ backgroundColor: Farbe(item.schwierigkeit) }}>
+                                                <IconBarbell id="BarbellLogo" size={42} stroke={1.5} color={item.schwierigkeit === "Fortgeschritten" ? "black" : "white"} />
+                                            </div>
+                                        </Tooltip>
+                                    </Grid.Col>
+                                </Grid>
 
+                            </Paper>
+                        </Grid.Col>
+                    )}
+                </Grid.Col>
             </Grid>
         </Container>
+
     );
 }

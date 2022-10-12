@@ -14,3 +14,8 @@
     right: 15px;
     top: -30px;
 }
+
+.filterColumn {
+    position:sticky;
+    top:0;
+}

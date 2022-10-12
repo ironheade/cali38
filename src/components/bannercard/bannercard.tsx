@@ -1,4 +1,6 @@
 import { createStyles, Card, Overlay, CardProps, Button, Text } from '@mantine/core';
+import { Link, useLocation } from 'react-router-dom';
+import { useEffect, useLayoutEffect } from 'react'
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -8,8 +10,8 @@ const useStyles = createStyles((theme) => ({
     backgroundPosition: 'center',
     transition: ".6s",
     '&:hover': {
-        backgroundSize: '140% auto'
-      }
+      backgroundSize: '140% auto'
+    }
   },
 
   content: {
@@ -82,16 +84,30 @@ export function ImageActionBanner({
           {description}
         </Text>
 
-        <Button
-          className={classes.action}
-          variant="white"
-          color="dark"
-          component="a"
-          size="xs"
-          href={action.link}
-        >
-          {action.label}
-        </Button>
+        {action.link.includes("#") ?
+          <Button
+            className={classes.action}
+            variant="white"
+            color="dark"
+            component="a"
+            size="xs"
+            href={action.link}
+          >
+            {action.label}
+          </Button>
+          : <Link to={action.link}>
+            <Button
+              className={classes.action}
+              variant="white"
+              color="dark"
+              component="a"
+              size="xs"
+            >
+              {action.label}
+            </Button>
+          </Link>
+        }
+
       </div>
     </Card>
   );

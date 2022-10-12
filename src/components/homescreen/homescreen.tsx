@@ -6,19 +6,17 @@ import { FooterSimple } from "../footer";
 import {
     Routes,
     Route,
+    useLocation,
 } from "react-router-dom";
 
 import { LandingPage } from "../landingPage";
 import { Events } from "../events";
 import { Calisthenics } from "../calisthenics";
 import { LoginModal } from "../loginModal";
-import { useState } from "react";
+import { useState, useLayoutEffect } from "react";
 import headerImage from '../../resources/headerImage.jpg'
 
 export function HomeScreen(props: any) {
-
-    const [scroll, scrollTo] = useWindowScroll();
-    const [loginModalOpen, setLoginModalOpen] = useState(false)
 
     const mockdata = [
         {
@@ -34,6 +32,13 @@ export function HomeScreen(props: any) {
             "label": "Calisthenics"
         }
     ]
+
+    const [scroll, scrollTo] = useWindowScroll();
+    const [loginModalOpen, setLoginModalOpen] = useState(false)
+    //gerade aktive Route
+    const [active, setActive] = useState(mockdata[0].link)
+
+
     const footermockdata = [{
         "link": "#",
         "label": "Contact"
@@ -51,9 +56,15 @@ export function HomeScreen(props: any) {
         "label": "Careers"
     }]
 
+    const location = useLocation();
+
+       useLayoutEffect(() => {
+        setActive(location.pathname) 
+       }, [location])
+
     return (
         <>
-            <HeaderResponsive links={mockdata} 
+            <HeaderResponsive active={active} setActive={setActive} links={mockdata} 
             //logged={props.logged} 
             changeOpenState={setLoginModalOpen} 
             //logout={() => props.logout()} 

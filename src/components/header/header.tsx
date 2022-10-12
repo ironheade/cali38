@@ -86,12 +86,14 @@ const useStyles = createStyles((theme) => ({
 interface HeaderResponsiveProps {
   links: { link: string; label: string }[];
   changeOpenState: any;
+  active:any;
+  setActive:any
 }
 
-export function HeaderResponsive({ links, changeOpenState
+export function HeaderResponsive({ links, changeOpenState, active, setActive
 }: HeaderResponsiveProps) {
   const [opened, { toggle, close }] = useDisclosure(false);
-  const [active, setActive] = useState(links[0].link);
+  //const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
 
   const auth = getAuth();

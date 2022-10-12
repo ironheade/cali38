@@ -10,7 +10,7 @@ import {
 
 import { LandingPage } from "../landingPage";
 import { Events } from "../events";
-import { About } from "../about";
+import { Calisthenics } from "../calisthenics";
 import { LoginModal } from "../loginModal";
 import { useState } from "react";
 import headerImage from '../../resources/headerImage.jpg'
@@ -66,7 +66,7 @@ export function HomeScreen(props: any) {
             <Routes>
                 <Route path="/" element={<LandingPage />}></Route>
                 <Route path="/events" element={<Events />}></Route>
-                <Route path="/calisthenics" element={<About />}></Route>
+                <Route path="/calisthenics" element={<Calisthenics />}></Route>
             </Routes>
 
             {/*<div id="secondImage" style={{ transform: `translate(0px,${(-scroll.y / 4) + 500}px)` }} />*/}

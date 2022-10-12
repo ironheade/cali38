@@ -85,46 +85,46 @@ const useStyles = createStyles((theme) => ({
 
 interface HeaderResponsiveProps {
   links: { link: string; label: string }[];
-  changeOpenState:any;
+  changeOpenState: any;
 }
 
-export function HeaderResponsive({ links, changeOpenState 
+export function HeaderResponsive({ links, changeOpenState
 }: HeaderResponsiveProps) {
   const [opened, { toggle, close }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
 
   const auth = getAuth();
-  const [logged,setLogged] = useState<Object | null>(null)
+  const [logged, setLogged] = useState<Object | null>(null)
 
-  useEffect(() =>{
+  useEffect(() => {
     const unlisten = auth.onAuthStateChanged(
-       authUser => {
-         authUser
-           ? setLogged(authUser)
-           : setLogged(null);
-       },
+      authUser => {
+        authUser
+          ? setLogged(authUser)
+          : setLogged(null);
+      },
     );
     return () => {
-        unlisten();
+      unlisten();
     }
- }, []);
+  }, []);
 
   const scrollDirection = useScrollDirection();
 
   const location = useLocation();
-  useEffect(()=>{setActive(location.pathname)},[])
+  useEffect(() => { setActive(location.pathname) }, [])
 
-  function Login(){
+  function Login() {
     changeOpenState(true)
     close();
   }
-  function Logout(){
+  function Logout() {
     auth.signOut()
-  } 
+  }
 
-  const items = links.map((link,index) => (
-      <Link 
+  const items = links.map((link, index) => (
+    <Link
       key={index}
       to={link.link}
       className={cx(classes.link, { [classes.linkActive]: active === link.link })}
@@ -132,27 +132,28 @@ export function HeaderResponsive({ links, changeOpenState
         setActive(link.link);
         close();
       }}
-      >{link.label}</Link> 
+    >{link.label}</Link>
   ));
 
-  useEffect(()=>{logged&&changeOpenState(false)},[logged])
+  useEffect(() => { logged && changeOpenState(false) }, [logged])
 
-  const logbutton =  <Button key="logbutton" variant='outline' 
-  onClick={()=>{
-    !logged?Login():Logout()
-  }}
-  >{logged?"Logout":"login"}</Button>
+  const logbutton = <Button key="logbutton" variant='outline'
+    onClick={() => {
+      !logged ? Login() : Logout()
+    }}
+  >{logged ? "Logout" : "login"}</Button>
 
   return (
-    <Header height={HEADER_HEIGHT} mb={0} className={classes.root} 
-    style={{transform: scrollDirection==="down"?'translateY(-'+HEADER_HEIGHT+'px)':"translateY(0px)"}}
+    <Header height={HEADER_HEIGHT} mb={0} className={classes.root}
+      style={{ transform: scrollDirection === "down" ? 'translateY(-' + HEADER_HEIGHT + 'px)' : "translateY(0px)" }}
     >
       <Container size="xl" className={classes.header}>
         {/*<MantineLogo size={28} />*/}
-        <img src={logo} width="50"/>
+        <img src={logo} width="50" />
 
         <Group spacing={5} className={classes.links}>
-        {[...items,logbutton]}
+          {[...items]}
+          {/*[...items,logbutton]*/}
         </Group>
 
         <Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />
@@ -160,7 +161,8 @@ export function HeaderResponsive({ links, changeOpenState
         <Transition transition="pop-top-right" duration={200} mounted={opened}>
           {(styles) => (
             <Paper className={classes.dropdown} withBorder style={styles}>
-              {[...items,logbutton]}
+              {[...items]}
+              {/*[...items,logbutton]*/}
             </Paper>
           )}
         </Transition>

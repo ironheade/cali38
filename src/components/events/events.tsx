@@ -8,7 +8,7 @@ import FloFlag from '../../resources/FloFlag.jpg'
 import Konrad from '../../resources/konrad.jpg'
 import franzi_wallsit from '../../resources/franzi_wallsit.jpg'
 
-import './articles.css'
+import './events.css'
 
 interface Article {
     title?: string;

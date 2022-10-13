@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
-
 .card {
     display: flex;
     flex-direction: column;
@@ -10,7 +8,7 @@
     color: #fff;
     box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
     height: 100%;
-    width: 100%;
+
     border-radius: 4px;
     transition: all 500ms;
     overflow: hidden;
@@ -26,27 +24,15 @@
 }
 
 .animated-grid {
-height: 85vh;
-margin-bottom: 200px;
+    height: 85vh;
+    margin-bottom: 200px;
 
-display: grid;
-gap: 1rem;
+    display: grid;
+    gap: 1rem;
 
-/* Explicit grid */
-/*
-grid-template-areas:
-    'a  b'  
-    'c  d'
-    'e  f'
-    'g  h'
-    'i  j'  
-    'k  l'
-    '🌟 🌟';
+    /* Explicit grid */
+    /*
 
-grid-template-rows: repeat(8, 20%);
-grid-template-columns: repeat(2, 35%);
-
-*/
 grid-template-areas:
     'a  b  c  d'
     'l  🌟 🌟 e'
@@ -56,78 +42,171 @@ grid-template-areas:
 grid-template-rows: repeat(4, 25%);
 grid-template-columns: 240px auto auto 240px;
 
+grid-template-areas:
+    'a  b'  
+    'c  d'
+    'e  f'
+    'g  h'
+    'i  j'  
+    'k  l'
+    '🌟 🌟';
 
---stagger-delay: 100ms;
+grid-template-rows: repeat(7, 20%);
+grid-template-columns: repeat(2, 25%);
+
+grid-template-areas:
+    'a '
+    ' b'  
+    'c '
+     'd'
+    'e '
+     'f'
+    'g '
+     'h'
+    'i'
+     'j'  
+    'k '
+     'l'
+    '🌟';
+
+grid-template-rows: repeat(13, 20%);
+grid-template-columns: repeat(1, 80%);
+*/
+
+grid-template-areas:
+'a  b  c  d'
+'l  🌟 🌟 e'
+'k  🌟 🌟 f'
+'j  i  h  g';
+
+grid-template-rows: repeat(4, 25%);
+grid-template-columns: 240px auto auto 240px;
+
+    --stagger-delay: 100ms;
+}
+
+@media screen and (max-width: 900px) {
+    .animated-grid {
+        grid-template-areas:
+            'a  b'
+            'c  d'
+            'e  f'
+            'g  h'
+            'i  j'
+            'k  l'
+            '🌟 🌟';
+
+        grid-template-rows: repeat(7, 14%);
+        grid-template-columns: repeat(2, 50%);
+        padding-right: 20px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .animated-grid {
+        grid-template-areas:
+        'a '
+        ' b'  
+        'c '
+         'd'
+        'e '
+         'f'
+        'g '
+         'h'
+        'i'
+         'j'  
+        'k '
+         'l'
+        '🌟';
+    
+    grid-template-rows: repeat(13, 7.5%);
+    grid-template-columns: repeat(1, 100%);
+    height: 160vh;
+
+    }
 }
 
 @keyframes cardEntrance {
-from {
-    opacity: 0;
-    transform: scale(0.3);
-    filter: hue-rotate(180deg);
-}
-to {
-    opacity: 1;
-    transform: scale(1);
-    filter: hue-rotate(0deg);
-}
+    from {
+        opacity: 0;
+        transform: scale(0.3);
+        filter: hue-rotate(180deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+        filter: hue-rotate(0deg);
+    }
 }
 
 .card {
-background-color: rgb(36, 243, 147);
-animation: cardEntrance 700ms ease-out;
-animation-fill-mode: backwards;
+    background-color: rgb(36, 243, 147);
+    animation: cardEntrance 700ms ease-out;
+    animation-fill-mode: backwards;
 }
 
 .card:nth-child(1) {
-grid-area: a;
-animation-delay: calc(1 * var(--stagger-delay));
+    grid-area: a;
+    animation-delay: calc(1 * var(--stagger-delay));
 }
+
 .card:nth-child(2) {
-grid-area: b;
-animation-delay: calc(2 * var(--stagger-delay));
+    grid-area: b;
+    animation-delay: calc(2 * var(--stagger-delay));
 }
+
 .card:nth-child(3) {
-grid-area: c;
-animation-delay: calc(3 * var(--stagger-delay));
+    grid-area: c;
+    animation-delay: calc(3 * var(--stagger-delay));
 }
+
 .card:nth-child(4) {
-grid-area: d;
-animation-delay: calc(4 * var(--stagger-delay));
+    grid-area: d;
+    animation-delay: calc(4 * var(--stagger-delay));
 }
+
 .card:nth-child(5) {
-grid-area: e;
-animation-delay: calc(5 * var(--stagger-delay));
+    grid-area: e;
+    animation-delay: calc(5 * var(--stagger-delay));
 }
+
 .card:nth-child(6) {
-grid-area: f;
-animation-delay: calc(6 * var(--stagger-delay));
+    grid-area: f;
+    animation-delay: calc(6 * var(--stagger-delay));
 }
+
 .card:nth-child(7) {
-grid-area: g;
-animation-delay: calc(7 * var(--stagger-delay));
+    grid-area: g;
+    animation-delay: calc(7 * var(--stagger-delay));
 }
+
 .card:nth-child(8) {
-grid-area: h;
-animation-delay: calc(8 * var(--stagger-delay));
+    grid-area: h;
+    animation-delay: calc(8 * var(--stagger-delay));
 }
+
 .card:nth-child(9) {
-grid-area: i;
-animation-delay: calc(9 * var(--stagger-delay));
+    grid-area: i;
+    animation-delay: calc(9 * var(--stagger-delay));
 }
+
 .card:nth-child(10) {
-grid-area: j;
-animation-delay: calc(10 * var(--stagger-delay));
+    grid-area: j;
+    animation-delay: calc(10 * var(--stagger-delay));
 }
+
 .card:nth-child(11) {
-grid-area: k;
-animation-delay: calc(11 * var(--stagger-delay));
+    grid-area: k;
+    animation-delay: calc(11 * var(--stagger-delay));
 }
+
 .card:nth-child(12) {
-grid-area: l;
-animation-delay: calc(12 * var(--stagger-delay));
+    grid-area: l;
+    animation-delay: calc(12 * var(--stagger-delay));
 }
+
 .card:last-child {
-grid-area: 🌟;
-animation-delay: calc(13 * var(--stagger-delay));
+    grid-area: 🌟;
+    animation-delay: calc(13 * var(--stagger-delay));
 }

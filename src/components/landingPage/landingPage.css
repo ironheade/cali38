@@ -34,5 +34,11 @@
     }
   }
 
+@media screen and (max-width: 800px) {
+
+    #headline {font-size: 42px;}
+    .bigHeadline {font-size: 42px;}
+
+}
 
 

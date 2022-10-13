@@ -48,7 +48,7 @@ export function ImageImpression() {
                 />
 
             </Modal>
-            <section className="animated-grid">
+            <div className="animated-grid">
                 {imageURLs.map((item,index) =>
                     <div
                         key={index}
@@ -57,7 +57,8 @@ export function ImageImpression() {
                         onClick={() => OpenModal(item)}
                     />)}
                     
-            </section>
+            </div>
+
         </div>
     )
 }

@@ -71,10 +71,11 @@ export function Exercise() {
     return (
 
         <Container
-            size="xl"
-            style={{ marginTop: "30vh" }} my="xs">
+            //size="xl"
+            //style={{ marginTop: "30vh" }} my="xs"
+            >
             <Grid grow>
-                <Grid.Col md={2}>
+                <Grid.Col md={1}>
                     <Grid.Col className='filterColumn'>
                         <Paper id="exercisePaper" shadow="xl" p="md">
                             <h1>Filter</h1>
@@ -83,7 +84,8 @@ export function Exercise() {
                         </Paper>
                     </Grid.Col>
                 </Grid.Col>
-                <Grid.Col md={10} >
+                <Grid.Col md={7} >
+                    {/*<Grid.Col md={10} > */}
                     {exerciseData.map((item, index) =>
                         <Grid.Col key={index}>
                             <Paper id="exercisePaper" shadow="xl" p="md">

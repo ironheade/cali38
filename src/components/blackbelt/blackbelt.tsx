@@ -3,6 +3,7 @@ import { } from 'antd-mobile'
 import './blackbelt.css'
 import kkkbacklever from '../../resources/kkkbacklever.png'
 import { useResizeObserver } from '@mantine/hooks';
+import { Link } from 'react-router-dom';
 
 export function Blackbelt() {
 
@@ -25,7 +26,8 @@ export function Blackbelt() {
                                 Calisthenics bedeutet übersetzt "schöne Kraft" und stellt eine Art des Eigengewichtstrainings dar.
                                 Basics wie Klimmzüge oder Liegestütze werden dabei mit Übungen aus anderen Sportarten wie dem Turnen oder Akrobatik kombiniert.<br/><br/>
                                 Trainiert werden kann grundsätzlich überall, es wird jedoch vorwiegend an bestimmten Trainingsspots, so genannten Calisthenics Parks trainiert.
-                                Eine Übersicht über die Parks in Braunschweig findet ihr <span><a className='blackBeltLink'>hier</a></span>.<br/><br/>
+                                Eine Übersicht über die Parks in Braunschweig findet ihr <Link className='blackBeltLink' to="calisthenics?tab=Locations">hier</Link>.<br/><br/>
+                                
 
                                 Durch das Progressionsprinzip ist die Sportart insbesondere sehr gut für Einsteiger geeignet.</p>
                         </Grid.Col>

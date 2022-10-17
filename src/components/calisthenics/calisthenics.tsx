@@ -1,11 +1,12 @@
 import { Exercise } from '../exercise';
 import { Tabs, TabsProps, Container } from '@mantine/core';
 import { IconJumpRope, IconMap2, IconBarbell } from '@tabler/icons';
-import { useState } from 'react' 
+import { useState, useEffect } from 'react' 
 import './calisthenics.css'
 import { Locations } from '../locations';
 import { Equipment } from '../equipment';
 import { useViewportSize } from '@mantine/hooks';
+import {useSearchParams } from 'react-router-dom'
 
 function StyledTabs(props: TabsProps) {
 
@@ -68,8 +69,15 @@ function StyledTabs(props: TabsProps) {
 
 
 export function Calisthenics() {
-  const [activeTab, setActiveTab] = useState<string | null>('Training');
   const { height, width } = useViewportSize();
+  const [activeTab, setActiveTab] = useState<string | null>('Training');
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(()=>{
+    searchParams.get("tab")!==null &&
+    setActiveTab(searchParams.get("tab"))
+  },[searchParams])
 
   return (
     

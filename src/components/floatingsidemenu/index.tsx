@@ -1,0 +1,1 @@
+export {Floatingsidemenu} from './floatingsidemenu'

@@ -1,6 +1,7 @@
 #exercisePaper {
     position: relative;
     margin-bottom: 30px;
+    background-color: hsl(0, 0%, 97%);
 }
 #Schwierigkeit {
     width: 60px;

@@ -5,9 +5,10 @@ import { useState } from 'react'
 import './calisthenics.css'
 import { Locations } from '../locations';
 import { Equipment } from '../equipment';
+import { useViewportSize } from '@mantine/hooks';
 
 function StyledTabs(props: TabsProps) {
-  
+
   return (
     <Tabs
       unstyled
@@ -68,6 +69,8 @@ function StyledTabs(props: TabsProps) {
 
 export function Calisthenics() {
   const [activeTab, setActiveTab] = useState<string | null>('Training');
+  const { height, width } = useViewportSize();
+
   return (
     
     <Container style={{ marginTop: "30vh"}} my="xs">
@@ -75,13 +78,13 @@ export function Calisthenics() {
       <StyledTabs value={activeTab} onTabChange={setActiveTab}>
       <div id="TabPillWrapper">
         <Tabs.List >
-          <Tabs.Tab value="Training" icon={<IconBarbell size={30} />} className="TabPill">
+          <Tabs.Tab value="Training" icon={<IconBarbell size={width>500?30:0} />} className="TabPill">
           Training
           </Tabs.Tab>
-          <Tabs.Tab value="Equipment" icon={<IconJumpRope size={30} />} className="TabPill">
+          <Tabs.Tab value="Equipment" icon={<IconJumpRope size={width>500?30:0} />} className="TabPill">
           Equipment
           </Tabs.Tab>
-          <Tabs.Tab value="Locations" icon={<IconMap2 size={30} />} className="TabPill">
+          <Tabs.Tab value="Locations" icon={<IconMap2 size={width>500?30:0} />} className="TabPill">
           Locations
           </Tabs.Tab>
         </Tabs.List>

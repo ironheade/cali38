@@ -96,6 +96,7 @@ export function LandingPage() {
                 </Grid>
             </Container>
 
+
         </>
     )
 }

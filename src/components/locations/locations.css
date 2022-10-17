@@ -1,0 +1,32 @@
+#exercisePaper {
+    position: relative;
+    margin-bottom: 30px;
+}
+#Schwierigkeit {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 15px;
+    top: -30px;
+}
+
+.filterColumn {
+    position:sticky;
+    top:0;
+}
+
+.locationIndex {
+    text-decoration: none;
+    color: black;
+    color:gray;
+    font-size: larger;
+
+}
+.locationIndex:hover{
+    color:black
+}

@@ -38,6 +38,10 @@ export function HomeScreen(props: any) {
     //gerade aktive Route
     const [active, setActive] = useState(mockdata[0].link)
 
+    const footerData = [{
+        "link": "https://konrad-bendzuck.com/",
+        "label": "Konrad Bendzuck"
+    }]
 
     const footermockdata = [{
         "link": "#",
@@ -81,7 +85,7 @@ export function HomeScreen(props: any) {
             </Routes>
 
             {/*<div id="secondImage" style={{ transform: `translate(0px,${(-scroll.y / 4) + 500}px)` }} />*/}
-            <FooterSimple links={footermockdata} />
+            <FooterSimple links={footerData} />
         </>
     )
 }

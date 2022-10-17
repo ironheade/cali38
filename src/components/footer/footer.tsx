@@ -41,8 +41,9 @@ export function FooterSimple({ links }: FooterSimpleProps) {
       color="dimmed"
       key={link.label}
       href={link.link}
-      onClick={(event) => event.preventDefault()}
+      //onClick={(event) => event.preventDefault()}
       size="sm"
+      target="_blank"
     >
       {link.label}
     </Anchor>
@@ -53,7 +54,7 @@ export function FooterSimple({ links }: FooterSimpleProps) {
       <Container size="xl" className={classes.inner}>
         <IconUfo size={50} stroke={1.5}/>
         <p style={{color:"gray"}}>Cali 38</p>
-        <Group className={classes.links}>{items}</Group>
+        <Group className={classes.links}><p style={{color:'gray'}}>Website by: </p>{items}</Group>
       </Container>
     </div>
   );
